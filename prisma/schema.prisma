@@ -8,7 +8,6 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-// ===== ПОЛЬЗОВАТЕЛИ (NextAuth) =====
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -63,7 +62,6 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// ===== ТОВАРЫ =====
 model Category {
   id          String    @id @default(cuid())
   name        String
@@ -95,7 +93,6 @@ model Product {
   reviews    Review[]
 }
 
-// ===== КОРЗИНА =====
 model Cart {
   id        String   @id @default(cuid())
   userId    String   @unique
@@ -119,7 +116,6 @@ model CartItem {
   @@unique([cartId, productId])
 }
 
-// ===== ЗАКАЗЫ =====
 model Order {
   id              String      @id @default(cuid())
   userId          String
@@ -145,7 +141,6 @@ model OrderItem {
   product Product @relation(fields: [productId], references: [id])
 }
 
-// ===== ОТЗЫВЫ =====
 model Review {
   id        String   @id @default(cuid())
   userId    String
