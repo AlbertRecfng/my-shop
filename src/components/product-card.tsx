@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Product, Category } from '@prisma/client'
+import AddToCartButton from '@/components/add-to-cart-button'
 
 type ProductWithCategory = Product & { category: Category }
 
@@ -46,9 +46,7 @@ export default function ProductCard({ product }: { product: ProductWithCategory 
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full" size="sm">
-          В корзину
-        </Button>
+        <AddToCartButton product={product} />
       </CardFooter>
     </Card>
   )
